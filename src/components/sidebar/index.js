@@ -13,5 +13,3 @@ export default function Sidebar() {
         <Suggestions userId={userId} following={following} loggedInUserDocId={docId} />
     </div>
 }
-
-Sidebar.whyDidYouRender = true;
