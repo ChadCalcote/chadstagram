@@ -41,3 +41,27 @@ export async function updateFollowedUserFollowers(profileDocId, loggedInUserDocI
         followers: isFollowingProfile ? arrayRemove(loggedInUserDocId) : arrayUnion(loggedInUserDocId)
     });
 }
+
+export async function getPhotos(userId, following) {
+    const photoRef = query(collection(db, "photos"), where('userId', 'in', following));
+    const result = await getDocs(photoRef);
+    const userFollowedPhotos = result.docs.map((photo) => ({
+        ...photo.data(),
+        docId: photo.id
+    }));
+
+    const photoWithUserDetails = await Promise.all(
+        userFollowedPhotos.map(async (photo) => {
+            let userLikedPhoto = false;
+            if(photo.likes.includes(userId)) {
+                userLikedPhoto = true;
+            }
+            const user = await getUserByUserId(photo.userId);
+            const { username } = user[0];
+            return { username, ...photo, userLikedPhoto };
+        })
+    );
+
+    return photoWithUserDetails;
+    
+}

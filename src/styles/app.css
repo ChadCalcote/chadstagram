@@ -503,6 +503,9 @@ video {
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -534,6 +537,15 @@ video {
 .mt-5 {
   margin-top: 1.25rem;
 }
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+.mb-16 {
+  margin-bottom: 4rem;
+}
+.mb-12 {
+  margin-bottom: 3rem;
+}
 .flex {
   display: flex;
 }
@@ -554,6 +566,9 @@ video {
 }
 .h-screen {
   height: 100vh;
+}
+.h-4 {
+  height: 1rem;
 }
 .w-16 {
   width: 4rem;
@@ -650,6 +665,10 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .text-center {
   text-align: center;
