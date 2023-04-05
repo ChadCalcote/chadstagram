@@ -12,7 +12,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
     const handleSubmitComment = async (event) => {
         event.preventDefault();
 
-        setComments([{ displayName, comment }, ...comments]);
+        setComments([...comments, { displayName, comment }]);
         setComment('');
         const photoDoc = doc(db, "photos", docId)
         return await updateDoc(photoDoc, {
