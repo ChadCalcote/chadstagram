@@ -34,6 +34,7 @@ export default function SignUp() {
                     fullName,
                     emailAddress: emailAddress.toLowerCase(),
                     following: [],
+                    followers: [],
                     dateCreated: Date.now()
                 });
                 navigate(ROUTES.DASHBOARD);
@@ -44,6 +45,7 @@ export default function SignUp() {
                 setError(error.message);
             }
         } else {
+            setUsername('');
             setError('That username is already taken, please try another.')
         }
     };
@@ -65,7 +67,7 @@ export default function SignUp() {
                     {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
                     <form onSubmit={handleSignUp} method="POST">
                         <input aria-label='Enter your username' type="text" placeholder="Username" className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2' onChange={({ target }) => setUsername(target.value)} value={username} />
-                        <input aria-label='Enter your full name' type="text" placeholder="Full Name" className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2' onChange={({ target }) => setFullName(target.value)} value={fullName} />
+                        <input aria-label='Enter your full name' type="text" placeholder="Full name" className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2' onChange={({ target }) => setFullName(target.value)} value={fullName} />
                         <input aria-label='Enter your email address' type="text" placeholder="Email address" className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2' onChange={({ target }) => setEmailAddress(target.value)} value={emailAddress} />
                         <input aria-label='Enter your password' type="password" placeholder="Password" className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2' onChange={({ target }) => setPassword(target.value)} value={password} />
                         <button disabled={isInvalid} type="submit" className={`bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && `opacity-50`}`}>Sign Up</button>
